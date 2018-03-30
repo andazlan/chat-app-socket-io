@@ -31,6 +31,10 @@ io.on('connection', (socket) => {
             return callback('Name and room are required');
         }
 
+        if (users.isRegistered(params.name, params.room)){
+            return callback('User has been registerd, try to use other name');
+        }
+
         socket.join(params.room);
         users.removeUser(socket.id);
         users.addUser(socket.id, params.name, params.room);

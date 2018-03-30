@@ -69,4 +69,19 @@ describe('Users', () => {
         var userList = users.getUserList('React Course');
         expect(userList).toEqual(['Jen']);
     });
+
+    it('should return true when user has registered on room', () => {
+        var registered = users.isRegistered('Jen', 'React Course');
+        expect(registered).toBe(true);
+    });
+
+    it('should return false when user has not registered on room', () => {
+        var registered = users.isRegistered('Jen', 'Node Course');
+        expect(registered).toBe(false);
+    });
+
+    it('should return false when user not registered', () => {
+        var registered = users.isRegistered('Markus', 'React Course');
+        expect(registered).toBe(false);
+    });
 });

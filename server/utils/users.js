@@ -32,6 +32,17 @@ class Users {
         return users[0];
     }
 
+    isRegistered(name, room) {
+        var users = this.users.filter((user) => {
+            return user.name === name && user.room === room;
+        });
+
+        if (users.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
     getUserList(room) {
         var users = this.users.filter((user) => {
             return user.room === room;
