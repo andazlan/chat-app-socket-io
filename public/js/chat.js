@@ -44,7 +44,7 @@ socket.on('updateUserList', function (users) {
     jQuery('#users').html(ol);
 });
 
-//show chate message
+//show chat message
 socket.on('newMessage', function (message) {  
     var formattedTime = moment(message.createdAt).format('h:mm a');
     var template = jQuery('#message-template').html();
@@ -78,7 +78,6 @@ jQuery('#message-form').on('submit', function(e) {
     var messageTextBox = jQuery('[name=message]');
 
     socket.emit('createMessage', {
-        from : 'User',
         text : messageTextBox.val()
     }, function () { 
         messageTextBox.val('');
